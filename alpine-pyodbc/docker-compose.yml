@@ -1,0 +1,10 @@
+version: "3"
+services:
+  pyodbc:
+    container_name: "pyodbc"
+    image: local/pyodbc
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./python:/src
