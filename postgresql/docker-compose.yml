@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  db:
+    # image: postgres:14
+    # image: postgres:17.2-alpine3.21
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./volumes/db_store:/var/lib/postgresql/data     # [volume名]:[コンテナ上の絶対パス]
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB : 'postgres'
+
+# volumes:
+#   db-store:
+#     driver_opts:
+#       type: none
+#       device: ./volumes/db_store
+#       o: bind
+
